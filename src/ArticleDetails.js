@@ -2,6 +2,9 @@ import React from "react";
 import { View, Text, Image, Platform, Button, Share } from "react-native";
 import { Link } from "./routing";
 
+import { Box, Title, Subtitle } from "./styledComponents/";
+import Card from "./Card";
+
 const ArticleDetails = props => {
   const backButton = (
     <View>
@@ -29,28 +32,19 @@ const ArticleDetails = props => {
   const selectedArticle = props.selectedArticle;
   return (
     <View>
-      <View>
-        <View>
-          <Text>{`#${selectedArticle.number}`}</Text>
-        </View>
-        <View>
-          <Text>{`Name: ${selectedArticle.name}`}</Text>
-        </View>
-        <View>
-          <Text>{`Type: ${selectedArticle.type}`}</Text>
-        </View>
-        <View>
-          <Image
-            style={{ width: 50, height: 50 }}
-            source={{ uri: selectedArticle.photoUrl }}
-          />
-        </View>
+      <Box p={3} width={500} height={400}>
+        <Card heading="Title" content={selectedArticle.name} />
+        <Image
+          style={{ width: 200, height: 200, borderRadius: 5 }}
+          source={{ uri: selectedArticle.photoUrl }}
+        />
+
         {Platform.OS !== "web" && (
           <View>
             <Button title="Share" onPress={this.handlePress} />
           </View>
         )}
-      </View>
+      </Box>
     </View>
   );
 };

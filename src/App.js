@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import articles from "./articlesStore";
 import { Router, Switch, Route } from "./routing";
 import Home from "./Home";
 import ArticleDetails from "./ArticleDetails";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styledComponents/";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
+const client = new ApolloClient({
+  uri: "http://locahost:4000/graphql"
+});
 
 class App extends Component {
   state = {
@@ -16,28 +24,32 @@ class App extends Component {
   };
   render() {
     return (
-      <View style={styles.container}>
-        <Router>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <Home {...props} selectArticle={this.selectArticle} />
-              )}
-            />
-            <Route
-              path="/articleDetails"
-              render={props => (
-                <ArticleDetails
-                  {...props}
-                  selectedArticle={this.state.selectedArticle}
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <View style={styles.container}>
+            <Router>
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={props => (
+                    <Home {...props} selectArticle={this.selectArticle} />
+                  )}
                 />
-              )}
-            />
-          </Switch>
-        </Router>
-      </View>
+                <Route
+                  path="/articleDetails"
+                  render={props => (
+                    <ArticleDetails
+                      {...props}
+                      selectedArticle={this.state.selectedArticle}
+                    />
+                  )}
+                />
+              </Switch>
+            </Router>
+          </View>
+        </ThemeProvider>
+      </ApolloProvider>
     );
   }
 }
