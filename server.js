@@ -25,21 +25,21 @@ var articlesData = [
   {
     id:1,
     title: "Street Food",
-    photoUrl: "./src/images/food.jpg",
+    photoUrl: "food.jpg",
     description:'description goes here',
     topic: "food"
   },
   {
     id: 2,
     title: "Temples and Sakura",
-    photoUrl: "./src/images/scenic.jpg",
+    photoUrl: "scenic.jpg",
     description:'description goes here',
     topic: "scenic"
   },
   {
     id: 3,
     title: "Art Museum Visit",
-    photoUrl: "./src/images/art.jpg",
+    photoUrl: "art.jpg",
     description: 'description goes here',
     topic: "art"
   }

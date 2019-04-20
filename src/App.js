@@ -26,9 +26,32 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-
+        <ThemeProvider theme={theme}>
+          <View style={styles.container}>
+          <Router>
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={props => (
+                    <Home {...props} selectArticle={this.selectArticle} />
+                  )}
+                />
+                <Route
+                  path="/articleDetails"
+                  render={props => (
+                    <ArticleDetails
+                      {...props}
+                      selectedArticle={this.state.selectedArticle}
+                    />
+                  )}
+                />
+              </Switch>
+            </Router>
             <Articles />
 
+          </View>
+        </ThemeProvider>
       </ApolloProvider>
     );
   }

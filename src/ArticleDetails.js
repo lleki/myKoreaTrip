@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, Platform, Button } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Link } from "./routing";
 
 import { Box, Title, Subtitle } from "./styledComponents/";
@@ -30,10 +30,11 @@ const ArticleDetails = props => {
     <View>
       <Box p={3} width={500} height={400}>
         <Card heading="Title" content={selectedArticle.title} />
+
         <Image
-          style={{ width: 200, height: 200, borderRadius: 5 }}
-          source={{ uri: selectedArticle.photoUrl }}
-        />
+        style={{ width: 500, height: 500, borderRadius: 5 }}
+        source={require(`./images/${selectedArticle.photoUrl}`)}
+      />
 
 
       </Box>
