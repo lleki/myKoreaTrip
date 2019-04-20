@@ -2,7 +2,12 @@ import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Article from "./ArticleDetails"
+import { Touchable, View } from "react-native";
+
+
+
 const Articles = () => (
+
   <Query
     query={gql`
       {
@@ -20,10 +25,14 @@ const Articles = () => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :( {error}</p>;
 
-      return data.articles.map( currentArticle => (
-        <Article key={currentArticle.id} article={currentArticle} />
-      ));
+      return data.articles.map( currentArticle => {
+        return(
+
+        <Article article={currentArticle} />
+
+      )});
     }}
   </Query>
+
 );
 export default Articles;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {
-  fontFamily,
+
   textAlign,
   space,
   fontWeight,
@@ -8,7 +8,7 @@ import {
 } from "styled-system";
 
 export const Text = styled.div`
- ${fontFamily}
+ font-family: 'Open Sans', sans-serif;
   ${textAlign}
   ${space}
   ${fontWeight}
