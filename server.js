@@ -1,8 +1,9 @@
-const express = require("express");
-const express_graphql = require("express-graphql");
-const { buildSchema } = require("graphql");
+var express = require('express');
+var express_graphql = require('express-graphql');
+var {buildSchema} = require('graphql');
+const cors = require('cors')
 
-//graphql schema
+
 const schema = buildSchema(`
   type Query{
     article(id: Int!): Article
@@ -14,40 +15,33 @@ const schema = buildSchema(`
   type Article{
     id: Int
     title: String
-    author: String
+    photoUrl: String
     description: String
     topic: String
-    url: String
   }
 `);
 
 var articlesData = [
   {
-    id: 1,
-    title: "The Complete Node.js Developer Course",
-    author: "Andrew Mead, Rob Percival",
-    description:
-      "Learn Node.js by building real-world applications with Node, Express, MongoDB, Mocha, and more!",
-    topic: "Node.js",
-    url: "https://codingthesmartway.com/courses/nodejs/"
+    id:1,
+    title: "Street Food",
+    photoUrl: "./src/images/food.jpg",
+    description:'description goes here',
+    topic: "food"
   },
   {
     id: 2,
-    title: "Node.js, Express & MongoDB Dev to Deployment",
-    author: "Brad Traversy",
-    description:
-      "Learn by example building & deploying real-world Node.js applications from absolute scratch",
-    topic: "Node.js",
-    url: "https://codingthesmartway.com/courses/nodejs-express-mongodb/"
+    title: "Temples and Sakura",
+    photoUrl: "./src/images/scenic.jpg",
+    description:'description goes here',
+    topic: "scenic"
   },
   {
     id: 3,
-    title: "JavaScript: Understanding The Weird Parts",
-    author: "Anthony Alicea",
-    description:
-      "An advanced JavaScript course for everyone! Scope, closures, prototypes, this, build your own framework, and more.",
-    topic: "JavaScript",
-    url: "https://codingthesmartway.com/courses/understand-javascript/"
+    title: "Art Museum Visit",
+    photoUrl: "./src/images/art.jpg",
+    description: 'description goes here',
+    topic: "art"
   }
 ];
 
@@ -86,6 +80,8 @@ const root = {
 // create an express server and a graphql endpoint
 
 const app = express();
+
+app.use(cors())
 app.use(
   "/graphql",
   express_graphql({ schema: schema, rootValue: root, graphiql: true })

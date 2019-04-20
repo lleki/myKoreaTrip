@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Title, Subtitle, Text } from "./styledComponents/";
+import { Box, Title, Text } from "./styledComponents/";
 
 const Card = ({ heading, content }) => {
   return (

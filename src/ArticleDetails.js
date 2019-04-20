@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, Platform, Button, Share } from "react-native";
+import { View, Text, Image, Platform, Button } from "react-native";
 import { Link } from "./routing";
 
 import { Box, Title, Subtitle } from "./styledComponents/";
@@ -13,7 +13,7 @@ const ArticleDetails = props => {
       </Link>
     </View>
   );
-  if (!props.selectedArticle) {
+  if (!props.article) {
     return (
       <View>
         {backButton}
@@ -22,30 +22,24 @@ const ArticleDetails = props => {
     );
   }
 
-  const handlePress = () => {
-    Share.share({
-      message: "Check out my favorite Pokemon!",
-      url: props.selectedArticle.photoUrl
-    });
-  };
 
-  const selectedArticle = props.selectedArticle;
+
+  const selectedArticle = props.article;
+  console.log('selectedaritcle', selectedArticle)
   return (
     <View>
       <Box p={3} width={500} height={400}>
-        <Card heading="Title" content={selectedArticle.name} />
+        <Card heading="Title" content={selectedArticle.title} />
         <Image
           style={{ width: 200, height: 200, borderRadius: 5 }}
           source={{ uri: selectedArticle.photoUrl }}
         />
 
-        {Platform.OS !== "web" && (
-          <View>
-            <Button title="Share" onPress={this.handlePress} />
-          </View>
-        )}
+
       </Box>
     </View>
   );
 };
 export default ArticleDetails;
+
+

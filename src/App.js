@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
-import articles from "./articlesStore";
+// import articles from "./articlesStore";
 import { Router, Switch, Route } from "./routing";
 import Home from "./Home";
 import ArticleDetails from "./ArticleDetails";
@@ -8,9 +8,10 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styledComponents/";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import Articles from "./Articles";
 
 const client = new ApolloClient({
-  uri: "http://locahost:4000/graphql"
+  uri: "http://localhost:4000/graphql"
 });
 
 class App extends Component {
@@ -25,30 +26,9 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <ThemeProvider theme={theme}>
-          <View style={styles.container}>
-            <Router>
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={props => (
-                    <Home {...props} selectArticle={this.selectArticle} />
-                  )}
-                />
-                <Route
-                  path="/articleDetails"
-                  render={props => (
-                    <ArticleDetails
-                      {...props}
-                      selectedArticle={this.state.selectedArticle}
-                    />
-                  )}
-                />
-              </Switch>
-            </Router>
-          </View>
-        </ThemeProvider>
+
+            <Articles />
+
       </ApolloProvider>
     );
   }
