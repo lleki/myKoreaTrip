@@ -3,11 +3,11 @@ import {  Box, Title, Text } from "./styledComponents/";
 import { Image, View } from "react-native";
 
 
-const Card = ({ heading, content, image }) => {
+const Card = ({ heading, content, image, boxShadow }) => {
 
   return (
-    <Box p={3} height={400} bg="white" boxShadow={2}>
-    <Box flexDirection="row" flex={1}>
+    <Box p={3} height={400} bg="white" borderRadius={2} flexDirection="column">
+    <Box alignItems="center">
     <Image
         style={{ width: 80, height: 80, borderRadius: 5 }}
         source={require(`./images/${image}`)}
@@ -23,3 +23,7 @@ const Card = ({ heading, content, image }) => {
 
 
 export default Card;
+
+// -webkit-box-shadow: 4px 11px 34px -27px rgba(0,0,0,0.35);
+// -moz-box-shadow: 4px 11px 34px -27px rgba(0,0,0,0.35);
+// box-shadow: 4px 11px 34px -27px rgba(0,0,0,0.35);

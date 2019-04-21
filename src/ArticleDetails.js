@@ -29,7 +29,7 @@ const ArticleDetails = props => {
   console.log('selectedaritcle', selectedArticle)
   return (
       <Box p={3} width={500} height={400}>
-        <Card heading={selectedArticle.title} content={selectedArticle.description} image={selectedArticle.photoUrl}/>
+        <Card heading={selectedArticle.title} boxShadow={1} content={selectedArticle.description} image={selectedArticle.photoUrl}/>
       </Box>
   );
 };

@@ -3,7 +3,10 @@ export const theme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fontSizes: [12, 14, 16, 20, 24, 36, 48, 80, 96],
   fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-
+  shadows: {
+    small: '0 0 4px rgba(0, 0, 0, .125)',
+    large: '0 0 24px rgba(0, 0, 0, .125)'
+  },
   lineHeights: {
     solid: 1,
     title: 1.25,
@@ -69,3 +72,4 @@ export const theme = {
     ]
   }
 };
+
