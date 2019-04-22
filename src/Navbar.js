@@ -12,20 +12,10 @@ const getTopics = articles => {
   });
   return uniqueTopics;
 };
-// const FEED_QUERY = gql`
-//   {
-//     articles {
-//       topic
-//     }
-//   }
-// `;
-
-const FEED_SEARCH_QUERY = gql`
-  query FeedSearchQuery($filter: String!) {
-    articles(filter: $filter) {
-      articles {
-        topic
-      }
+const FEED_QUERY = gql`
+  {
+    articles {
+      topic
     }
   }
 `;
@@ -35,7 +25,7 @@ const Navbar = () => {
       <Text pb={1} fontWeight="semibold" fontSize={2}>
         Filter by Topics
       </Text>
-      <Query query={FEED_SEARCH_QUERY}>
+      <Query query={FEED_QUERY}>
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :( {error}</p>;
