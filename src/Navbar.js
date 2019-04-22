@@ -1,27 +1,57 @@
-
 import React from "react";
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { TouchableOpacity, Linking } from "react-native";
+import { Box, Text } from "./styledComponents/";
+import { Router, Switch, Route } from "./routing";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 
-const Navbar = props => {
-  const handlePress = article => {
-    props.selectArticle(article);
+const getTopics = articles => {
+  const topics = articles.map(article => article.topic);
+  const uniqueTopics = topics.filter(function(topic, index) {
+    return topics.indexOf(topic) == index;
+  });
+  return uniqueTopics;
+};
+// const FEED_QUERY = gql`
+//   {
+//     articles {
+//       topic
+//     }
+//   }
+// `;
 
-    props.history.push("/articleDetails");
-  };
+const FEED_SEARCH_QUERY = gql`
+  query FeedSearchQuery($filter: String!) {
+    articles(filter: $filter) {
+      articles {
+        topic
+      }
+    }
+  }
+`;
+const Navbar = () => {
   return (
-    <View>
-
-
-    </View>
+    <Box flexDirection="column" p={3}>
+      <Text pb={1} fontWeight="semibold" fontSize={2}>
+        Filter by Topics
+      </Text>
+      <Query query={FEED_SEARCH_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error :( {error}</p>;
+          const links = getTopics(data.articles);
+          return links.map(link => {
+            return (
+              <TouchableOpacity
+                onPress={() => Linking.openURL("http://google.com")}
+              >
+                <Text>{link}</Text>
+              </TouchableOpacity>
+            );
+          });
+        }}
+      </Query>
+    </Box>
   );
 };
 export default Navbar;
-{/* <FlatList
-keyExtractor={article => article.number}
-data={articles}
-renderItem={({ item }) => (
-  <TouchableOpacity onPress={() => handlePress(item)}>
-    <Text>{item.name}</Text>
-  </TouchableOpacity>
-)}
-/> */}

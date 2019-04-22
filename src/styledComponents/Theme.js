@@ -4,8 +4,8 @@ export const theme = {
   fontSizes: [12, 14, 16, 20, 24, 36, 48, 80, 96],
   fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
   shadows: {
-    small: '0 0 4px rgba(0, 0, 0, .125)',
-    large: '0 0 24px rgba(0, 0, 0, .125)'
+    small: "0 0 4px rgba(0, 0, 0, .125)",
+    large: "0 0 24px rgba(0, 0, 0, .125)"
   },
   lineHeights: {
     solid: 1,
@@ -31,7 +31,7 @@ export const theme = {
   colors: {
     black: "#000",
     "pretty-red": "#d83636",
-    "pale-pink": "##FDD8D3",
+    "pale-pink": "#FDD8D3",
     "dark-gray": "#333",
     "mid-gray": "#555",
     gray: " #777",
@@ -72,4 +72,3 @@ export const theme = {
     ]
   }
 };
-

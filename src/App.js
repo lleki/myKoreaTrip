@@ -5,10 +5,10 @@ import { Router, Switch, Route } from "./routing";
 import Home from "./Home";
 import ArticleDetails from "./ArticleDetails";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./styledComponents/";
+import { theme, Box, Title, Text } from "./styledComponents/";
+
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
@@ -27,25 +27,11 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
-          <View style={styles.container}>
-
-            <Home/>
-
-          </View>
+          <Home />
         </ThemeProvider>
       </ApolloProvider>
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-
-    alignItems: "center",
-flex: 1,
-
-    backgroundColor: "#FDD8D3"
-
-  }
-});
 
 export default App;

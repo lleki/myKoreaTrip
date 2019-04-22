@@ -5,7 +5,6 @@ import { Link } from "./routing";
 import { Box, Title, Subtitle } from "./styledComponents/";
 import Card from "./Card";
 
-
 const ArticleDetails = props => {
   const backButton = (
     <View>
@@ -23,16 +22,17 @@ const ArticleDetails = props => {
     );
   }
 
-
-
   const selectedArticle = props.article;
-  console.log('selectedaritcle', selectedArticle)
+
   return (
-      <Box p={3} width={500} height={400}>
-        <Card heading={selectedArticle.title} boxShadow={1} content={selectedArticle.description} image={selectedArticle.photoUrl}/>
-      </Box>
+    <Box p={3} width={500} height={400}>
+      <Card
+        heading={selectedArticle.title}
+        boxShadow={1}
+        content={selectedArticle.description}
+        image={selectedArticle.photoUrl}
+      />
+    </Box>
   );
 };
 export default ArticleDetails;
-
-
