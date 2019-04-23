@@ -4,26 +4,26 @@ import gql from "graphql-tag";
 import Article from "./ArticleDetails";
 import { Touchable, View } from "react-native";
 
-const Articles = () => (
-  <Query
-    query={gql`
-      {
-        articles {
-          id
-          title
-          photoUrl
-          description
-          topic
-        }
-      }
-    `}
-  >
+const FEED_SEARCH_QUERY = gql`
+  query ArticlesByTopic($topic: String!) {
+    articlesByTopic(topic: $topic) {
+      id
+      title
+      photoUrl
+      description
+      topic
+    }
+  }
+`;
+
+const Articles = ({ topic }) => (
+  <Query query={FEED_SEARCH_QUERY} variables={{ topic }}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :( {error}</p>;
-
-      return data.articles.map(currentArticle => {
-        return <Article article={currentArticle} />;
+      console.log("data", data);
+      return data.articles.map((currentArticle, index) => {
+        return <Article key={index} article={currentArticle} />;
       });
     }}
   </Query>

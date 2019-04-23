@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Title, Text } from "./styledComponents/";
-import { Image, View } from "react-native";
+import { Image } from "react-native";
 
 const Card = ({ heading, content, image, boxShadow }) => {
   return (

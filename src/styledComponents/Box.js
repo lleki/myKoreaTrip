@@ -22,5 +22,5 @@ import styled from "styled-components";
 
 export const Box = styled.div`
   display: flex;
-  ${space} ${borderRadius} ${width} ${fontSize} ${color} ${zIndex} ${top} ${right} ${bottom} ${left} ${position} ${flex} ${flexDirection} ${flexWrap} ${alignItems} ${justifyContent};
+  ${space} ${borderRadius} ${width} ${fontSize} ${boxShadow} ${alignContent} ${color} ${zIndex} ${top} ${right} ${bottom} ${left} ${position} ${flex} ${flexDirection} ${flexWrap} ${alignItems} ${justifyContent};
 `;

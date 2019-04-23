@@ -1,22 +1,13 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
-import { Link } from "./routing";
+import { View, Text } from "react-native";
 
-import { Box, Title, Subtitle } from "./styledComponents/";
+import { Box } from "./styledComponents/";
 import Card from "./Card";
 
 const ArticleDetails = props => {
-  const backButton = (
-    <View>
-      <Link to="/">
-        <Text>Go Back</Text>
-      </Link>
-    </View>
-  );
   if (!props.article) {
     return (
       <View>
-        {backButton}
         <Text>No Article selected</Text>
       </View>
     );
