@@ -80,7 +80,6 @@ const getArticle = args => {
 };
 
 const getArticles = function(args) {
-  console.log("args", args.topic);
   if (args.topic) {
     const topic = args.topic.toLowerCase();
     return articlesData.filter(article => article.topic === topic);

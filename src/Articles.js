@@ -21,7 +21,6 @@ const Articles = ({ history, match }) => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :( {error}</p>;
 
-      console.log("data", data);
       return data.articles.map((currentArticle, index) => {
         return <Article key={index} article={currentArticle} />;
       });
