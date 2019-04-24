@@ -1,8 +1,7 @@
 import React from "react";
-import { TouchableOpacity, Linking } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 import { Box, Text } from "./styledComponents/";
-import ArticleDetails from "./ArticleDetails";
 
 // const getTopics = articles => {
 //   const topics = articles.map(article => article.topic);
@@ -15,7 +14,12 @@ import ArticleDetails from "./ArticleDetails";
 
 const NAV_LINKS = ["food", "scenic", "art", "historical"];
 
-const Navbar = ({ updateTopic }) => {
+const Navbar = ({ location, history }) => {
+  console.log("history", history);
+  console.log("location ", location);
+  const handlePress = link => {
+    history.push(`/articles/${link}`);
+  };
   return (
     <Box flexDirection="column" p={3}>
       <Text pb={1} fontWeight="semibold" fontSize={2}>
@@ -23,10 +27,7 @@ const Navbar = ({ updateTopic }) => {
       </Text>
 
       {NAV_LINKS.map((link, index) => (
-        <TouchableOpacity
-          key={index}
-          onPress={() => Linking.openURL(`articles/${link}`)}
-        >
+        <TouchableOpacity key={index} onPress={() => handlePress(link)}>
           <Text>{link}</Text>
         </TouchableOpacity>
       ))}

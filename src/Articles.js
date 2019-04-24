@@ -2,7 +2,6 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Article from "./ArticleDetails";
-import { Touchable, View } from "react-native";
 
 const FEED_SEARCH_QUERY = gql`
   query ArticlesByTopic($topic: String) {

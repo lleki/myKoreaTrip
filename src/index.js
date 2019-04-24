@@ -2,6 +2,7 @@ import React from "react";
 import ReactDom from "react-dom";
 import App from "./App";
 
+import { Router } from "./routing";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
@@ -15,7 +16,9 @@ const client = new ApolloClient({
 ReactDom.render(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </ThemeProvider>
   </ApolloProvider>,
 
