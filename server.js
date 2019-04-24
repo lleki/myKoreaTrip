@@ -7,6 +7,7 @@ const schema = buildSchema(`
   type Query{
     article(id: Int!): Article
     articles(topic: String): [Article]
+
   }
   type Mutation{
     updateArticleTopic(id: Int!, topic: String!): Article
@@ -78,18 +79,14 @@ const getArticle = args => {
   })[0];
 };
 
-const getArticlesByTopic = args => {
+const getArticles = function(args) {
+  console.log("args", args.topic);
   if (args.topic) {
-    const topic = args.topic;
-    const newData = articlesData.filter(article => (article.topic = topic));
-    console.log("new data!!", newData);
-    return newData;
+    const topic = args.topic.toLowerCase();
+    return articlesData.filter(article => article.topic === topic);
   } else {
     return articlesData;
   }
-};
-const getAllArticles = () => {
-  return articlesData;
 };
 
 const updateArticleTopic = ({ id, topic }) => {
@@ -104,8 +101,8 @@ const updateArticleTopic = ({ id, topic }) => {
 //root resolver
 const root = {
   article: getArticle,
-  articles: getAllArticles,
-  articlesByTopic: getArticlesByTopic,
+  articles: getArticles,
+
   updateArticleTopic: updateArticleTopic
 };
 

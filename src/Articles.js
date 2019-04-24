@@ -5,8 +5,8 @@ import Article from "./ArticleDetails";
 import { Touchable, View } from "react-native";
 
 const FEED_SEARCH_QUERY = gql`
-  query ArticlesByTopic($topic: String!) {
-    articlesByTopic(topic: $topic) {
+  query ArticlesByTopic($topic: String) {
+    articles(topic: $topic) {
       id
       title
       photoUrl
@@ -16,11 +16,12 @@ const FEED_SEARCH_QUERY = gql`
   }
 `;
 
-const Articles = ({ topic }) => (
-  <Query query={FEED_SEARCH_QUERY} variables={{ topic }}>
+const Articles = ({ history, match }) => (
+  <Query query={FEED_SEARCH_QUERY} variables={{ topic: match.params.topic }}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :( {error}</p>;
+
       console.log("data", data);
       return data.articles.map((currentArticle, index) => {
         return <Article key={index} article={currentArticle} />;

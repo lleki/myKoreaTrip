@@ -12,17 +12,20 @@ import ArticleDetails from "./ArticleDetails";
 //   return uniqueTopics;
 // };
 
-const NAV_LINKS = ["Food", "Scenic", "Art", "Historical"];
+const NAV_LINKS = ["food", "scenic", "art", "historical"];
 
-const Navbar = () => {
+const Navbar = ({ props }) => {
+  const onLinkClick = topic => {
+    props.history.push(`articles/${topic}`);
+  };
   return (
     <Box flexDirection="column" p={3}>
       <Text pb={1} fontWeight="semibold" fontSize={2}>
         Filter by Topics
       </Text>
 
-      {NAV_LINKS.map(link => (
-        <TouchableOpacity onPress={() => Linking.openURL(`/${link}`)}>
+      {NAV_LINKS.map((link, index) => (
+        <TouchableOpacity key={index} onPress={() => onLinkClick(link)}>
           <Text>{link}</Text>
         </TouchableOpacity>
       ))}
