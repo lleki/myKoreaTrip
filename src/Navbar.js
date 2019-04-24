@@ -14,10 +14,7 @@ import ArticleDetails from "./ArticleDetails";
 
 const NAV_LINKS = ["food", "scenic", "art", "historical"];
 
-const Navbar = ({ props }) => {
-  const onLinkClick = topic => {
-    props.history.push(`articles/${topic}`);
-  };
+const Navbar = ({ updateTopic }) => {
   return (
     <Box flexDirection="column" p={3}>
       <Text pb={1} fontWeight="semibold" fontSize={2}>
@@ -25,7 +22,10 @@ const Navbar = ({ props }) => {
       </Text>
 
       {NAV_LINKS.map((link, index) => (
-        <TouchableOpacity key={index} onPress={() => onLinkClick(link)}>
+        <TouchableOpacity
+          key={index}
+          onPress={() => Linking.openURL(`articles/${link}`)}
+        >
           <Text>{link}</Text>
         </TouchableOpacity>
       ))}
