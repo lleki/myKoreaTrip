@@ -1,5 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Linking } from "react-native";
+
 import { Box, Text } from "./styledComponents/";
 import ArticleDetails from "./ArticleDetails";
 
