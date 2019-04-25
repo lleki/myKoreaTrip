@@ -5,7 +5,7 @@ import { Box, Text } from "./styledComponents/";
 
 const NAV_LINKS = ["food", "scenic", "art", "historical"];
 
-const Navbar = ({ location, history }) => {
+const Navbar = ({ history }) => {
   const handlePress = link => {
     history.push(`/articles/${link}`);
   };

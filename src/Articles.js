@@ -15,16 +15,28 @@ const FEED_SEARCH_QUERY = gql`
   }
 `;
 
-const Articles = ({ history, match }) => (
-  <Query query={FEED_SEARCH_QUERY} variables={{ topic: match.params.topic }}>
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :( {error}</p>;
+const Articles = ({ history, match }) => {
+  const onArticleClick = id => {
+    console.log("pressed article");
+    history.push(`/article/${id}`);
+  };
+  return (
+    <Query query={FEED_SEARCH_QUERY} variables={{ topic: match.params.topic }}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error :( {error}</p>;
 
-      return data.articles.map((currentArticle, index) => {
-        return <Article key={index} article={currentArticle} />;
-      });
-    }}
-  </Query>
-);
+        return data.articles.map((currentArticle, index) => {
+          return (
+            <Article
+              key={index}
+              article={currentArticle}
+              onPress={onArticleClick}
+            />
+          );
+        });
+      }}
+    </Query>
+  );
+};
 export default Articles;

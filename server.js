@@ -88,6 +88,7 @@ const getArticles = function(args) {
   }
 };
 
+//to integrate
 const updateArticleTopic = ({ id, topic }) => {
   articlesData.map(article => {
     if (article.id === id) {
